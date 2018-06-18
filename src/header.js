@@ -6,18 +6,29 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import './header.css';
 
 class Header extends Component {
   render() {
     return (
-      <div>
+      <div className="header">
         <Redirect to="/search" />
-        <NavLink to="/search" activeClassName="hurray">
-          Search
-        </NavLink>
-        <NavLink to="/my-list" activeClassName="hurray">
-          My List
-        </NavLink>
+        <div class="logo-group">
+          <div class="header__icon" />
+          <div class="header__logo logo">
+            <div class="logo__heading">GitHub</div>
+            <div class="logo__text">search</div>
+          </div>
+        </div>
+
+        <div className="nav-group">
+          <NavLink to="/search" className="header__search-link">
+            Search
+          </NavLink>
+          <NavLink to="/my-list" className="header__my-list-link">
+            My List
+          </NavLink>
+        </div>
       </div>
     );
   }
