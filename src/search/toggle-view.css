@@ -1,0 +1,28 @@
+.results__view-toggle {
+  height: 10vh;
+  justify-content: flex-end;
+  font-size: 4vmin;
+  font-family: "FontAwesome" !important;
+  color: #e0e0e0;
+}
+
+.view__dashboard {
+  width: 4vmin;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  padding-top: 0.5vh;
+  margin-right: 10px;
+}
+
+.view__list {
+  width: 4vmin;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+}
+
+.view__dashboard.active,
+.view__list.active {
+  color: #3c4146;
+}
