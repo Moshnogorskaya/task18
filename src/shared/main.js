@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import './main.css';
 
 import Header from "./header";
-import Search from "./search";
-import MyList from "./my-list";
+import Search from "./../search/search";
+import MyList from "./../my-list/my-list";
 
 class Main extends Component {
   render() {

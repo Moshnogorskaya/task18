@@ -12,12 +12,11 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <Redirect to="/search" />
-        <div class="logo-group">
-          <div class="header__icon" />
-          <div class="header__logo logo">
-            <div class="logo__heading">GitHub</div>
-            <div class="logo__text">search</div>
+        <div className="logo-group">
+          <div className="header__icon" />
+          <div className="header__logo logo">
+            <div className="logo__heading">GitHub</div>
+            <div className="logo__text">search</div>
           </div>
         </div>
 
