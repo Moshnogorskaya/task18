@@ -1,0 +1,34 @@
+.input {
+    flex-direction: column;
+    height: 6vh;
+    width: 35%;
+    justify-content: space-between;
+  }
+  
+  .input__placeholder {
+    font-size: 1.5vmin;
+    font-weight: normal;
+    position: relative;
+    top: 3.4vh;
+    z-index: 1;
+  }
+  
+  .input__placeholder.active {
+    font-size: 1.2vmin;
+    color: #0366d6;
+    top: 1vh;
+  }
+  
+  .input__field {
+    font-size: 1.5vmin;
+    height: 4vh;
+    border-bottom: 1px solid #0366d6;
+    background: transparent;
+    z-index: 2;
+  }
+
+  .input__field:focus {
+  border-bottom: 2px solid #0366d6;
+  outline: 0;
+  box-shadow: none;
+}

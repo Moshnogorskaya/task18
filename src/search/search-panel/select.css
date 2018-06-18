@@ -1,0 +1,29 @@
+.select__group {
+  width: 20%;
+  position: relative;
+  height: 4vh;
+}
+.select-group__select {
+  z-index: 2;
+  background: transparent;
+  width: 100%;
+  border-bottom: 1px solid #0366d6;
+  font-size: 1.5vmin;
+}
+.select-group__arrow {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 20%;
+  top: 0;
+  right: 0;
+  font-size: 1.2vmin;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-group__select:focus {
+  border-bottom: 2px solid #0366d6;
+  outline: 0;
+  box-shadow: none;
+}
