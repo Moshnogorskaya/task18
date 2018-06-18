@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './search.css';
 
 import SearchPanel from './search-panel';
-import NoResults from './no-results';
+import NoResults from './../shared/no-results';
 
 class Search extends Component {
   render() {

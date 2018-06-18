@@ -1,0 +1,12 @@
+.my-list {
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+}
+
+.my-list__heading {
+  height: 7vh;
+  font-weight: normal;
+  justify-content: flex-start;
+  width: 100%;
+}
