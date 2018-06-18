@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import './main.css';
 
 import Header from "./header";
 import Search from "./search";
@@ -8,7 +9,7 @@ import MyList from "./my-list";
 class Main extends Component {
   render() {
     return (
-      <div>
+      <div className='main'>
         <Header />
         <Switch>
           <Route exact path="/" component={Search} />

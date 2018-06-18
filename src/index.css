@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div,
+a,
+h1,
+p,
+ul,
+li,
+form,
+input,
+select {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0px;
+  appearance: none;
+}
