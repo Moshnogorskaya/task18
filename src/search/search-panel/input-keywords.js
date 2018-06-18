@@ -8,7 +8,7 @@ class InputKeywords extends Component {
         <p className="input__placeholder">Type here for search</p>
         <input
           type="text"
-          maxlength="50"
+          maxLength="50"
           className="input__field"
         />
       </div>
