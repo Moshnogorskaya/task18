@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import './search.css';
 
 import SearchPanel from './search-panel';
-import Results from './results';
+import NoResults from './no-results';
 
 class Search extends Component {
   render() {
     return (
        <div className='search'>
          <SearchPanel />
-         <Results />
+         <NoResults />
        </div>
     );
   }
