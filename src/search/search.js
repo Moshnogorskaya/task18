@@ -6,6 +6,17 @@ import NoResults from './../shared/no-results';
 import Results from './results';
 import ToggleView from './toggle-view';
 
+const repo = {
+  id: 1,
+  name: "Repo",
+  description: "Description",
+  language: "Language",
+  html_url: "url",
+  stargazers_count: 100,
+  archived: false,
+  topics: "Topic"
+};
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +24,7 @@ class Search extends Component {
     this.handleListToggle = this.handleListToggle.bind(this);
     this.state = {
       isList: true,
+      repos: [repo, repo, repo, repo, repo],
     }
   }
   handleDashboardToggle() {
@@ -34,7 +46,7 @@ class Search extends Component {
        <div className='search'>
          <SearchPanel />
          <ToggleView onDashboardToggle={this.handleDashboardToggle} onListToggle={this.handleListToggle} isList={this.state.isList}/>
-         <Results isList={this.state.isList}/>
+         <Results isList={this.state.isList} repos={this.state.repos}/>
        </div>
     );
   }
