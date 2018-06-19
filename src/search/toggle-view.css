@@ -1,8 +1,7 @@
 .view {
   width: 100%;
-  height: 80px;
+  height: 73px;
   justify-content: flex-end;
-  font-size: 40px;
   color: #e0e0e0;
 }
 
@@ -12,7 +11,7 @@
   align-items: center;
   cursor: pointer;
   margin-right: 10px;
-  font-size: 35px;
+  font-size: 32px;
 }
 
 .view__list {
@@ -20,6 +19,7 @@
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
+  font-size: 36px;
 }
 
 .view__dashboard.active,
