@@ -1,27 +1,31 @@
 import React, { Component } from "react";
 import './results.css';
 
-import Repo from './repo';
+import RepoListView from './repo-list-view';
+import RepoDashboardView from './repo-dashboard-view';
 
-// const items = [{
-//   id: 1,
-//   name: repo,
-//   description: description,
-//   language: language,
-//   html_url: url,
-//   stargazers_count: 100,
-//   archived: false,
-//   topics: [topic, topic, topic],
-// }]
+const repo = {
+  id: 1,
+  name: "Repo",
+  description: "Description",
+  language: "Language",
+  html_url: "url",
+  stargazers_count: 100,
+  archived: false,
+  topics: "Topic"
+};
 
-const repos = ['repo1', 'repo2', 'repo3', 'repo4', 'repo5'];
+const repos = [repo, repo, repo, repo, repo];
 
 class Results extends Component {
   render() {
     return (
-       <ul className='results'>
-         {repos.map(repo => <li key={Math.random()} className='results__item'><Repo /></li>)}
-       </ul>
+      //  <ul className='results-list'>
+      //    {repos.map(repo => <li key={Math.random()} className='results-list__item'><RepoListView repo={repo}/></li>)}
+      //  </ul>
+        <ul className='results-dashboard'>
+        {repos.map(repo => <li key={Math.random()} className='results-dashboard__item'><RepoDashboardView repo={repo}/></li>)}
+      </ul>
     );
   }
 }

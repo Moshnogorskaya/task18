@@ -1,22 +1,12 @@
 import React, { Component } from "react";
-import "./repo.css";
+import "./repo-list-view.css";
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faStar from '@fortawesome/fontawesome-free-solid/faStar';
 
-const repo = {
-  id: 1,
-  name: "Repo",
-  description: "Description",
-  language: "Language",
-  html_url: "url",
-  stargazers_count: 100,
-  archived: false,
-  topics: "Topic"
-};
-
-class Repo extends Component {
+class RepoListView extends Component {
   render() {
+    const repo = this.props.repo;
     return (
       <div className='repo'>
         <div className="wrapper-repo-action">
@@ -46,4 +36,4 @@ class Repo extends Component {
   }
 }
 
-export default Repo;
+export default RepoListView;
