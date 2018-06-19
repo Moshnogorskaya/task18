@@ -35,9 +35,12 @@ class SearchPanel extends Component {
     };
   }
 
+  url = '';
+
   handleTypeChange(type) {
     this.setState({
       type: type,
+      isValid: true,
     });
   }
 

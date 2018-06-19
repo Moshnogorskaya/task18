@@ -5,7 +5,7 @@
 }
 
 .select__group.warning {
-  border-top: 1px solid red;
+  background: #FCE6F1;
 }
 
 .select-group__select {
