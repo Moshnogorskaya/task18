@@ -9,28 +9,21 @@ class ToggleView extends Component {
     super(props);
     this.handleDashboardClick = this.handleDashboardClick.bind(this);
     this.handleListClick = this.handleListClick.bind(this);
-    this.state = {
-      isList: true
-    };
-  }
+    }
 
   handleDashboardClick() {
-    this.setState({
-      isList: false
-    });
+    this.props.onDashboardToggle();
   }
 
   handleListClick() {
-    this.setState({
-      isList: true
-    });
+    this.props.onListToggle();
   }
   render() {
     return (
       <div className="view">
         <a
           className={
-            !this.state.isList ? "view__dashboard active" : "view__dashboard"
+            !this.props.isList ? "view__dashboard active" : "view__dashboard"
           }
         >
           <FontAwesomeIcon
@@ -38,7 +31,7 @@ class ToggleView extends Component {
             onClick={this.handleDashboardClick}
           />
         </a>
-        <a className={this.state.isList ? "view__list active" : "view__list"}>
+        <a className={this.props.isList ? "view__list active" : "view__list"}>
           <FontAwesomeIcon icon={faBars} onClick={this.handleListClick} />
         </a>
       </div>
