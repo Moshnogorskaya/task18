@@ -9,13 +9,11 @@
 }
 
 .results-dashboard {
-  width: 100%;
+  width: 93%;
   flex-wrap: wrap;
-  border: 1px solid lightblue;
-  justify-content: center;
 }
 
 .results-dashboard__item {
-width: 40%;
+width: 50%;
 }
 
