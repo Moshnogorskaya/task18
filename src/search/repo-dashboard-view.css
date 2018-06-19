@@ -1,72 +1,74 @@
-.repo {
+.repo-dashboard {
   width: 100%;
   height: 275px;
   flex-direction: column;
-  padding: 0 3% 0 3%;
   border: 1px solid #e0e0e0;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
   margin: 3%;
+  padding: 3px 25px 0 40px;
 }
 
-.repo__stats {
+.repo-dashboard__stats {
   height: 20%;
   justify-content: space-between;
 }
-.repo__language {
+.repo-dashboard__language {
   color: #999999;
-  font-size: 1.5vmin;
+  font-size: 12px;
   align-items: center;
 }
-.repo__stars {
-  font-size: 2vmin;
+.repo-dashboard__stars {
+  font-size: 18px;
   align-items: center;
 }
 
 .stars__icon {
   color: #f1e05a;
-  margin-right: 7px;
-  font-size: 2.5vmin;
+  margin-right: 6px;
+  font-size: 18px;
+  position:relative;
+  top: -2px;
 }
-.repo__name {
+.repo-dashboard__name {
   color: #0366d6;
-  font-size: 2.3vmin;
+  font-size: 18px;
   font-weight: 600;
   height: 15%;
   align-items: flex-end;
   text-decoration: none;
 }
-.repo__description {
-  font-size: 1.7vmin;
+.repo-dashboard__description {
+  font-size: 12px;
   overflow: auto;
-  height: 25%;
+  height: 15%;
   font-weight: normal;
-  padding-top: 0.7vh;
+  padding-top: 3px;
 }
 
-.repo__description.big {
+.repo-dashboard__description.big {
   height: 40%;
 }
 
-.repo__topics {
-  height: 15%;
+.repo-dashboard__topics {
+  height: 25%;
   overflow: hidden;
-  padding-top: 0.7vh;
+  padding-top: 1px;
 }
 
-.repo__topics.hidden {
+.repo-dashboard__topics.hidden {
   display: none;
 }
 
 .topics__item {
-  font-size: 1.5vmin;
+  font-size: 10px;
   background: #f1f8fe;
   border: 1px solid #f1f8fe;
-  border-radius: 2vh;
-  height: 50%;
+  border-radius: 10px;
+  height: 25px;
   margin-right: 10px;
   justify-content: center;
   align-items: center;
-  padding: 0 2vh;
+  padding: 0 10px;
   white-space: nowrap;
   font-weight: normal;
 }
@@ -75,9 +77,9 @@
   height: 25%;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 1vh;
+  padding-top: 1px;
 }
-.repo__add {
+.repo-dashboard__add {
   color: white;
   background: #0366d6;
   border: none;
@@ -85,10 +87,10 @@
   width: 37%;
   height: 55%;
   font-weight: 100;
-  font-size: 1.5vmin;
+  font-size: 12px;
 }
 
-.repo__delete {
+.repo-dashboard__delete {
   color: white;
   background: #eb5757;
   border: none;
@@ -96,15 +98,15 @@
   width: 50%;
   height: 55%;
   font-weight: 100;
-  font-size: 1.5vmin;
+  font-size: 12px;
 }
 
-.repo__add:focus,
-.repo__delete:focus {
+.repo-dashboard__add:focus,
+.repo-dashboard__delete:focus {
   outline: none;
 }
 
-.repo__add:active,
-.repo__delete:active {
+.repo-dashboard__add:active,
+.repo-dashboard__delete:active {
   box-shadow: none;
 }
