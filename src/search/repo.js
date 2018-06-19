@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import "./repo.css";
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faStar from '@fortawesome/fontawesome-free-solid/faStar';
+
 const repo = {
   id: 1,
-  name: "repo",
-  description: "description",
-  language: "language",
+  name: "Repo",
+  description: "Description",
+  language: "Language",
   html_url: "url",
   stargazers_count: 100,
   archived: false,
-  topics: "topic"
+  topics: "Topic"
 };
 
 class Repo extends Component {
@@ -20,7 +23,7 @@ class Repo extends Component {
           <div className="repo__add" />
         </div>
         <div className="repo__info">
-          <a href={repo.html_url} class="repo__name">
+          <a href={repo.html_url} className="repo__name">
             {repo.name}
           </a>
           <p className="repo__description">{repo.description}</p>
@@ -32,7 +35,7 @@ class Repo extends Component {
         <div className="repo__stats">
           <div className="repo__stars stars-group">
             <span className="stars-group__icon">
-              {/* <i class="fas fa-star"></i> */}
+            <FontAwesomeIcon icon={faStar} />
             </span>
             {repo.stargazers_count}
           </div>

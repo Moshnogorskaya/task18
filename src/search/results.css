@@ -4,8 +4,6 @@
 }
 
 .results__item {
-  justify-content: space-between;
   height: 147px;
   border-top: 1px solid #e1e4e8;
-  padding: 10px 3% 10px 0;
 }

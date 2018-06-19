@@ -1,93 +1,95 @@
 .repo {
-    width: 100%;
+  width: 100%;
 }
 
 .wrapper-repo-action {
-    width: 3%;
-    padding-top: 2vh;
-  }
-  
-  .repo__add {
-    outline: 1px solid #0366d6;
-    border: 0.5vh solid white;
-    height: 2.5vh;
-    width: 2.5vh;
-  }
-  
-  /* .repo__delete {
+  padding-top: 32px;
+}
+
+.repo__add {
+  outline: 1px solid #0366d6;
+  border: 2px solid white;
+  height: 15px;
+  width: 15px;
+}
+
+/* .repo__delete {
     outline: 1px solid #0366d6;
     border: 0.5vh solid white;
     height: 2.5vh;
     width: 2.5vh;
     background: #0366d6;
   } */
-  
-  .repo__info {
-    flex-direction: column;
-    width: 83%;
-  }
-  
-  .repo__name {
-    color: #0366d6;
-    font-size: 2.5vmin;
-    font-weight: normal;
-    text-decoration: none;
-    height: 30%;
-    align-items: flex-end;
-  }
-  .repo__description {
-    padding: 1vh 0;
-    font-size: 1.5vmin;
-    font-weight: normal;
-    height: 40%;
-    overflow-y: auto;
-  }
-  
-  /* .repo__description.big {
+
+.repo__info {
+  flex-direction: column;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.repo__name {
+  color: #0366d6;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  height: 30%;
+  align-items: flex-end;
+  margin-top: 6px;
+}
+.repo__description {
+  padding: 5px 0;
+  font-size: 12px;
+  font-weight: normal;
+  height: 26%;
+  overflow-y: auto;
+}
+
+/* .repo__description.big {
     height: 70%;
   } */
-  
-  .repo__topics {
-    height: 30%;
-  }
-  
-  /* .repo__topics.hidden {
+
+.repo__topics {
+  height: 35px;
+}
+
+/* .repo__topics.hidden {
     display: none;
   } */
-  
-  .topics__item {
-    font-size: 1.5vmin;
-    background: #f1f8fe;
-    border: 1px solid #f1f8fe;
-    border-radius: 2vh;
-    height: 70%;
-    margin-right: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 0 2vh;
-  }
-  
-  .repo__stats {
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 12%;
-  }
-  
-  .repo__stars {
-    font-size: 2vmin;
-    align-items: center;
-  }
-  
-  .stars-group__icon {
-    color: #f1e05a;
-    font-family: "FontAwesome" !important;
-    font-size: 2.5vmin;
-    margin-right: 7px;
-  }
-  
-  .repo__language {
-    color: #999999;
-    font-size: 12px;
-    font-weight: 100;
-  }
+
+.topics__item {
+  font-size: 10px;
+  background: #f1f8fe;
+  border: 1px solid #f1f8fe;
+  border-radius: 10px;
+  height: 70%;
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.repo__stats {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 30px 12px 0;
+}
+
+.repo__stars {
+  font-size: 16px;
+  align-items: center;
+  font-weight: 200;
+}
+
+.stars-group__icon {
+  color: #f1e05a;
+  font-size: 20px;
+  margin-right: 7px;
+  position: relative;
+  top: -2px;
+}
+
+.repo__language {
+  color: #999999;
+  font-size: 13px;
+  font-weight: 100;
+}
