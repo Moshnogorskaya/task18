@@ -10,7 +10,8 @@
     align-items: center;
 }
 
-.wrapper-for-sticky-footer {
+.wrapper {
     flex: 1;
     flex-direction: column;
+    align-items: center;
 }

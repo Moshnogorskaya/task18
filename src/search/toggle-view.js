@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faThLarge from '@fortawesome/fontawesome-free-solid/faThLarge';
+import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 import './toggle-view.css';
 
 
 class ToggleView extends Component {
   render() {
     return (
-        <div className='results__view-toggle view'>
+        <div className='view'>
         <a className='view__dashboard'>
-          <i className="fas fa-th-large"></i>
+        <FontAwesomeIcon icon={faThLarge} />
         </a>
         <a className='view__list'>
-          <i className="fas fa-bars"></i>
+        <FontAwesomeIcon icon={faBars} />
         </a>
       </div>
     );

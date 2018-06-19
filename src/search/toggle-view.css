@@ -1,22 +1,22 @@
-.results__view-toggle {
-  height: 10vh;
+.view {
+  width: 100%;
+  height: 80px;
   justify-content: flex-end;
-  font-size: 4vmin;
-  font-family: "FontAwesome" !important;
+  font-size: 40px;
   color: #e0e0e0;
 }
 
 .view__dashboard {
-  width: 4vmin;
+  width: 40px;
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
-  padding-top: 0.5vh;
   margin-right: 10px;
+  font-size: 35px;
 }
 
 .view__list {
-  width: 4vmin;
+  width: 40px;
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
