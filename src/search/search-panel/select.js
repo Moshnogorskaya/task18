@@ -5,16 +5,23 @@ class Select extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      active: "placeholder"
+    };
   }
 
   handleChange(e) {
     this.props.onChangeValue(e.target.value);
+    this.setState({
+      active: e.value
+    });
   }
 
   render() {
+    let placeholder = this.props.options[0];
+    let options = this.props.options.slice(1);
     return (
       <div
-        className="select__group"
         className={
           this.props.required && !this.props.isValid
             ? "select__group warning"
@@ -23,15 +30,15 @@ class Select extends Component {
       >
         <select
           onChange={this.handleChange}
+          value={this.state.active}
           className="select-group__select"
-          defaultValue={this.props.placeholder}
         >
-          <option disabled value={this.props.placeholder}>
-            {this.props.placeholder}
+          <option disabled value="placeholder">
+            {placeholder.label}
           </option>
-          {this.props.options.map(type => (
-            <option key={Math.random()} value={type}>
-              {type}
+          {options.map(option => (
+            <option key={Math.random()} value={option.value}>
+              {option.label}
             </option>
           ))}
         </select>

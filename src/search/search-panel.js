@@ -5,7 +5,9 @@ import Select from "./search-panel/select";
 import InputKeywords from "./search-panel/input-keywords";
 import Submit from "./search-panel/submit";
 
-const types = ["Repository"];
+const types = [
+  {value: 'type', label: 'Type'},
+  {value: 'repository', label: 'Repository'}];
 const languages = [
   "Javascript",
   "css",
@@ -31,42 +33,43 @@ class SearchPanel extends Component {
       type: "",
       language: "",
       keyword: "",
-      isValid: true,
+      isValid: true
     };
   }
-
-  url = '';
-
   handleTypeChange(type) {
     this.setState({
-      type: type,
-      isValid: true,
+      type: type.toLowerCase(),
+      isValid: true
     });
   }
 
   handleLanguageChange(language) {
     this.setState({
-      language: language,
+      language: language.toLowerCase(),
     });
   }
 
   handleKeywordChange(keyword) {
     this.setState({
-      keyword: keyword,
+      keyword: keyword.toLowerCase()
     });
   }
   handleButtonClick() {
     if (this.state.type.length) {
       this.setState({
-        isValid: true,
+        isValid: true
       });
-      console.log(this.state.type, this.state.language, this.state.keyword);
+      this.getRepos(this.state.type, this.state.language, this.state.keyword);
     } else {
       this.setState({
-        isValid: false,
+        isValid: false
       });
     }
-    
+  }
+
+  getRepos(type, language, keyword) {
+    const url = `https://api.github.com/search/${type}?q=${keyword}language:${language}&sort=stars&order=desc`;
+    console.log(url);
   }
 
   render() {
@@ -76,7 +79,6 @@ class SearchPanel extends Component {
           options={types}
           required={true}
           isValid={this.state.isValid}
-          placeholder="Type"
           onChangeValue={this.handleTypeChange}
         />
         <Select
@@ -84,8 +86,8 @@ class SearchPanel extends Component {
           placeholder="Language"
           onChangeValue={this.handleLanguageChange}
         />
-        <InputKeywords onChangeValue={this.handleKeywordChange}/>
-        <Submit onButtonClick={this.handleButtonClick}/>
+        <InputKeywords onChangeValue={this.handleKeywordChange} />
+        <Submit onButtonClick={this.handleButtonClick} />
       </div>
     );
   }
