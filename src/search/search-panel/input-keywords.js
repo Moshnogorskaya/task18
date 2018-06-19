@@ -20,6 +20,7 @@ class InputKeywords extends Component {
     this.setState({
       value: e.target.value
     });
+    this.props.onChangeValue(e.target.value);
   }
 
   handleBlur() {

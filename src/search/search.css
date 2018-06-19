@@ -3,3 +3,8 @@
     align-items: center;
     width: 80%;
 }
+
+.wrapper-results {
+    flex-direction: column;
+    width: 100%;
+}
