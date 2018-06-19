@@ -26,10 +26,12 @@ class SearchPanel extends Component {
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
     this.handleKeywordChange = this.handleKeywordChange.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
     this.state = {
       type: "",
       language: "",
       keyword: "",
+      isValid: true,
     };
   }
 
@@ -50,14 +52,27 @@ class SearchPanel extends Component {
       keyword: keyword,
     });
   }
-
+  handleButtonClick() {
+    if (this.state.type.length) {
+      this.setState({
+        isValid: true,
+      });
+      console.log(this.state.type, this.state.language, this.state.keyword);
+    } else {
+      this.setState({
+        isValid: false,
+      });
+    }
+    
+  }
 
   render() {
-    console.log(this.state.type, this.state.language, this.state.keyword);
     return (
       <div className="search__search-panel">
         <Select
           options={types}
+          required={true}
+          isValid={this.state.isValid}
           placeholder="Type"
           onChangeValue={this.handleTypeChange}
         />
@@ -67,7 +82,7 @@ class SearchPanel extends Component {
           onChangeValue={this.handleLanguageChange}
         />
         <InputKeywords onChangeValue={this.handleKeywordChange}/>
-        <Submit />
+        <Submit onButtonClick={this.handleButtonClick}/>
       </div>
     );
   }

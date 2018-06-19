@@ -13,10 +13,17 @@ class Select extends Component {
 
   render() {
     return (
-      <div className="select__group">
+      <div
+        className="select__group"
+        className={
+          this.props.required && !this.props.isValid
+            ? "select__group warning"
+            : "select__group"
+        }
+      >
         <select
           onChange={this.handleChange}
-          className="criteria__type select-group__select"
+          className="select-group__select"
           defaultValue={this.props.placeholder}
         >
           <option disabled value={this.props.placeholder}>

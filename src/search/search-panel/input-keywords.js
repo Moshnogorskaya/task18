@@ -4,6 +4,9 @@ import "./input-keywords.css";
 class InputKeywords extends Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.state = {
       active: false,
       value: ""
@@ -43,9 +46,9 @@ class InputKeywords extends Component {
           Type here for search
         </p>
         <input
-          onFocus={this.handleClick.bind(this)}
-          onInput={this.handleInput.bind(this)}
-          onBlur={this.handleBlur.bind(this)}
+          onFocus={this.handleClick}
+          onInput={this.handleInput}
+          onBlur={this.handleBlur}
           type="text"
           maxLength="50"
           className="input__field"
@@ -56,4 +59,3 @@ class InputKeywords extends Component {
 }
 
 export default InputKeywords;
-("input__placeholder");
