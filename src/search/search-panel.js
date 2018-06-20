@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios';
 import "./search-panel.css";
 
 import Select from "./search-panel/select";
@@ -7,22 +6,23 @@ import InputKeywords from "./search-panel/input-keywords";
 import Submit from "./search-panel/submit";
 
 const types = [
-  {value: 'type', label: 'Type'},
-  {value: 'repositories', label: 'Repositories'}];
+  { value: "type", label: "Type" },
+  { value: "repositories", label: "Repositories" }
+];
 
 const languages = [
-  {value: 'language', label: 'Language'},
-  {value: 'javascript', label: 'Javascript'},
-  {value: 'css', label: 'CSS'},
-  {value: 'html', label: 'HTML'},
-  {value: 'php', label: 'PHP'},
-  {value: 'ruby', label: 'Ruby'},
-  {value: 'c++', label: 'C++'},
-  {value: 'python', label: 'Python'},
-  {value: 'c#', label: 'C#'},
-  {value: 'java', label: 'Java'},
-  {value: 'go', label: 'Go'},
-  {value: 'haskell', label: 'Haskell'},
+  { value: "language", label: "Language" },
+  { value: "javascript", label: "Javascript" },
+  { value: "css", label: "CSS" },
+  { value: "html", label: "HTML" },
+  { value: "php", label: "PHP" },
+  { value: "ruby", label: "Ruby" },
+  { value: "c++", label: "C++" },
+  { value: "python", label: "Python" },
+  { value: "c#", label: "C#" },
+  { value: "java", label: "Java" },
+  { value: "go", label: "Go" },
+  { value: "haskell", label: "Haskell" }
 ];
 
 class SearchPanel extends Component {
@@ -33,44 +33,42 @@ class SearchPanel extends Component {
       language: "",
       keyword: "",
       isValid: true,
-      repos: [],
+      repos: []
     };
   }
-  handleTypeChange = (type) => {
+  handleTypeChange = type => {
     this.setState({
       type: type.toLowerCase(),
       isValid: true
     });
-  }
+  };
 
-  handleLanguageChange = (language) => {
+  handleLanguageChange = language => {
     this.setState({
-      language: language.toLowerCase(),
+      language: language.toLowerCase()
     });
-  }
+  };
 
-  handleKeywordChange = (keyword) => {
+  handleKeywordChange = keyword => {
     this.setState({
       keyword: keyword.toLowerCase()
     });
-  }
+  };
   handleButtonClick = () => {
     if (this.state.type.length) {
       this.setState({
         isValid: true
       });
-      this.getRepos(this.state.type, this.state.language, this.state.keyword);
+      const url = `https://api.github.com/search/${this.state.type}?q=${
+        this.state.keyword
+      }+language:${this.state.language}&sort=stars&order=desc`;
+      this.props.onSearchSubmit(url);
     } else {
       this.setState({
         isValid: false
       });
     }
-  }
-
-  getRepos(type, language, keyword) {
-    const url = `https://api.github.com/search/${type}?q=${keyword}+language:${language}&sort=stars&order=desc`;
-    axios.get(url).then(response => console.log(response.data.items));
-  }
+  };
 
   render() {
     return (

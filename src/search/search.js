@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import "./search.css";
 
 import SearchPanel from "./search-panel";
@@ -6,43 +7,40 @@ import NoResults from "./../shared/no-results";
 import Results from "./results";
 import ToggleView from "./toggle-view";
 
-const repo = {
-  id: 1,
-  name: "Repo",
-  description: "Description",
-  language: "Language",
-  html_url: "url",
-  stargazers_count: 100,
-  archived: false,
-  topics: "Topic"
-};
-
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.handleDashboardToggle = this.handleDashboardToggle.bind(this);
-    this.handleListToggle = this.handleListToggle.bind(this);
     this.state = {
       isList: true,
-      repos: [repo, repo, repo, repo, repo]
+      repos: [],
     };
   }
-  handleDashboardToggle() {
+  handleDashboardToggle = () => {
     this.setState({
       isList: false
     });
   }
 
-  handleListToggle() {
+  handleListToggle = () => {
     this.setState({
       isList: true
     });
   }
 
+  handleSearchSubmit = (url) => {
+    console.log(this.state.repos);
+    axios.get(url, {
+      headers: {
+        'Accept': 'application/vnd.github.mercy-preview+json'
+      }}).then(response => this.setState({
+      repos: response.data.items,
+    }));
+  }
+
   render() {
     return (
       <div className="search">
-        <SearchPanel />
+        <SearchPanel onSearchSubmit={this.handleSearchSubmit}/>
         {this.state.repos && this.state.repos.length ? (
           <div className='wrapper-results'>
             <ToggleView

@@ -18,7 +18,7 @@ class RepoListView extends Component {
           </a>
           <p className="repo__description">{repo.description}</p>
           <ul className="repo__topics topics">
-            <li className="topics__item">{repo.topics}</li>
+          {repo.topics.map(topic => <li key={Math.random()} className="topics__item">{topic}</li>)}
           </ul>
         </div>
 

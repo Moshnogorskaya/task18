@@ -12,7 +12,7 @@ class Results extends Component {
       return (
         <ul className="results-list">
           {this.props.repos.map(repo => (
-            <li key={Math.random()} className="results-list__item">
+            <li key={repo.id} className="results-list__item">
               <RepoListView repo={repo} />
             </li>
           ))}
@@ -22,7 +22,7 @@ class Results extends Component {
     return (
       <ul className="results-dashboard">
         {this.props.repos.map(repo => (
-          <li key={Math.random()} className="results-dashboard__item">
+          <li key={repo.id} className="results-dashboard__item">
             <RepoDashboardView repo={repo} />
           </li>
         ))}
