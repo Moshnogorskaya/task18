@@ -52,9 +52,8 @@ class Search extends Component {
         });
         this.setState({
           repos: repos,
-          waiting: false
         });
-        console.log('fetched');
+        setTimeout(() => this.setState({ waiting: false}), 2000);
       });
   };
 
