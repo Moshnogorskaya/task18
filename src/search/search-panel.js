@@ -33,7 +33,6 @@ class SearchPanel extends Component {
       language: "",
       keyword: "",
       isValid: true,
-      repos: []
     };
   }
   handleTypeChange = type => {
@@ -85,7 +84,7 @@ class SearchPanel extends Component {
           onChangeValue={this.handleLanguageChange}
         />
         <InputKeywords onChangeValue={this.handleKeywordChange} />
-        <Submit onButtonClick={this.handleButtonClick} />
+        <Submit onButtonClick={this.handleButtonClick} disabled={this.props.waiting}/>
       </div>
     );
   }

@@ -1,22 +1,24 @@
 import React, { Component } from "react";
-import './submit.css';
+import "./submit.css";
 
 class Submit extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
 
-  handleClick(e) {
+  handleClick = (e) => {
     e.preventDefault();
     this.props.onButtonClick();
   }
 
-    render() {
-      return (
-        <button className='search__button' onClick={this.handleClick}>SEARCH</button>
-      );
-    }
+  render() {
+    return (
+      <button
+        className={this.props.disabled ? "search__button disabled" : "search__button"}
+        onClick={this.handleClick}
+      >
+        <span>SEARCH</span>
+      </button>
+    );
   }
-  
-  export default Submit;
+}
+
+export default Submit;
+("search__button");

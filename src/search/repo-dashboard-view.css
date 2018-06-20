@@ -55,10 +55,6 @@
   padding-top: 1px;
 }
 
-.repo-dashboard__topics.hidden {
-  display: none;
-}
-
 .topics__item {
   font-size: 10px;
   background: #f1f8fe;

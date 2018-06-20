@@ -8,7 +8,7 @@ import Results from "./results";
 import ToggleView from "./toggle-view";
 
 function cutString(string, desiredLength) {
-  if (string.length < desiredLength) {
+  if (!string || string.length < desiredLength) {
     return string;
   }
   return `${string.slice(0, desiredLength)}...`;
@@ -19,7 +19,8 @@ class Search extends Component {
     super(props);
     this.state = {
       isList: true,
-      repos: []
+      repos: [],
+      waiting: false
     };
   }
   handleDashboardToggle = () => {
@@ -34,8 +35,7 @@ class Search extends Component {
     });
   };
 
-  handleSearchSubmit = url => {
-    console.log(this.state.repos);
+  getRepos = url => {
     axios
       .get(url, {
         headers: {
@@ -51,15 +51,26 @@ class Search extends Component {
           return repo;
         });
         this.setState({
-          repos: repos
+          repos: repos,
+          waiting: false
         });
+        console.log('fetched');
       });
+  };
+
+  handleSearchSubmit = url => {
+    if (!this.state.waiting) {
+      this.setState({
+        waiting: true
+      });
+      this.getRepos(url);
+    }
   };
 
   render() {
     return (
       <div className="search">
-        <SearchPanel onSearchSubmit={this.handleSearchSubmit} />
+        <SearchPanel onSearchSubmit={this.handleSearchSubmit} waiting={this.state.waiting}/>
         {this.state.repos && this.state.repos.length ? (
           <div className="wrapper-results">
             <ToggleView
