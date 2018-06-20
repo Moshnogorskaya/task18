@@ -22,10 +22,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: [repo, repo, repo, repo]
+      repos: []
     };
   }
+
+  handleSearchComplete = repos => {
+    this.setState({
+      repos: repos
+    });
+  };
+
   render() {
+    let repos = this.state.repos;
     return (
       <div className="app">
         <BrowserRouter>
@@ -36,16 +44,25 @@ class App extends Component {
               <Route
                 exact
                 path="/"
-                render={props => <Search {...props} num="2" someProp={100} />}
+                render={props => (
+                  <Search
+                    {...props}
+                    repos={this.state.repos}
+                    onSearchComplete={this.handleSearchComplete}
+                  />
+                )}
               />
               <Route
                 path="/search"
-                render={props => <Search {...props} num="2" someProp={100} />}
+                render={props => (
+                  <Search
+                    {...props}
+                    repos={this.state.repos}
+                    onSearchComplete={this.handleSearchComplete}
+                  />
+                )}
               />
-              <Route
-                path="/my-list"
-                render={props => <MyList {...props} num="2" someProp={100} />}
-              />
+              <Route path="/my-list" render={props => <MyList {...props} />} />
             </Switch>
           </div>
         </BrowserRouter>

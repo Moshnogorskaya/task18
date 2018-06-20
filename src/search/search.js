@@ -19,7 +19,6 @@ class Search extends Component {
     super(props);
     this.state = {
       isList: true,
-      repos: [],
       waiting: false
     };
   }
@@ -50,15 +49,12 @@ class Search extends Component {
           repo.description = cutString(repo.description, 90);
           return repo;
         });
-        this.setState({
-          repos: repos
-        });
+        this.props.onSearchComplete(repos);
         this.timer = setTimeout(() => this.setState({ waiting: false }), 2000);
       });
   };
 
   handleSearchSubmit = url => {
-    console.log(this.props);
     if (!this.state.waiting) {
       this.setState({
         waiting: true
@@ -78,14 +74,14 @@ class Search extends Component {
           onSearchSubmit={this.handleSearchSubmit}
           waiting={this.state.waiting}
         />
-        {this.state.repos && this.state.repos.length ? (
+        {this.props.repos && this.props.repos.length ? (
           <div className="wrapper-results">
             <ToggleView
               onDashboardToggle={this.handleDashboardToggle}
               onListToggle={this.handleListToggle}
               isList={this.state.isList}
             />
-            <Results isList={this.state.isList} repos={this.state.repos} />
+            <Results isList={this.state.isList} repos={this.props.repos} />
           </div>
         ) : (
           <NoResults />
