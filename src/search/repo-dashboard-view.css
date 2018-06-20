@@ -75,7 +75,7 @@
   justify-content: center;
   padding-top: 1px;
 }
-.repo-dashboard__add {
+.repo-dashboard__action.add {
   color: white;
   background: #0366d6;
   border: none;
@@ -84,9 +84,10 @@
   height: 55%;
   font-weight: 100;
   font-size: 12px;
+  transition: 0.5s;
 }
 
-.repo-dashboard__delete {
+.repo-dashboard__action.delete {
   color: white;
   background: #eb5757;
   border: none;
@@ -95,14 +96,13 @@
   height: 55%;
   font-weight: 100;
   font-size: 12px;
+  transition: 0.5s;
 }
 
-.repo-dashboard__add:focus,
-.repo-dashboard__delete:focus {
+.repo-dashboard__action:focus {
   outline: none;
 }
 
-.repo-dashboard__add:active,
-.repo-dashboard__delete:active {
+.repo-dashboard__action:active {
   box-shadow: none;
 }

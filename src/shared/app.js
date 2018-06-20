@@ -22,7 +22,6 @@ class App extends Component {
   };
 
   handleChangeRepo = id => {
-    console.log("repo changed", id);
     let newRepos = [...this.state.repos];
     let changedRepo = newRepos.find(repo => repo.id === id);
     changedRepo.archived = !changedRepo.archived;
@@ -32,7 +31,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.repos);
     return (
       <div className="app">
         <BrowserRouter>

@@ -25,7 +25,7 @@ this.props.onChangeRepo(id);
       <ul className="results-dashboard">
         {this.props.repos.map(repo => (
           <li key={repo.id} className="results-dashboard__item">
-            <RepoDashboardView repo={repo} />
+            <RepoDashboardView repo={repo} id={repo.id} onChangeRepo={this.handleChangeRepo}/>
           </li>
         ))}
       </ul>

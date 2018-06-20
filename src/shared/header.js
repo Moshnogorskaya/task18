@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter,
-  Route,
-  NavLink,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './header.css';
 
 class Header extends Component {

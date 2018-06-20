@@ -5,8 +5,14 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import faStar from "@fortawesome/fontawesome-free-solid/faStar";
 
 class RepoDashboardView extends Component {
+  handleClick = e => {
+    e.preventDefault();
+    this.props.onChangeRepo(this.props.repo.id);
+  };
   render() {
     const repo = this.props.repo;
+
+    
     return (
       <div className="repo-dashboard">
         <div className="repo-dashboard__stats">
@@ -33,7 +39,16 @@ class RepoDashboardView extends Component {
             : null}
         </ul>
         <div className="button-wrapper">
-          <button className="repo-dashboard__add">ADD TO LIST</button>
+          <button
+            className={
+              repo.archived
+                ? "repo-dashboard__action delete"
+                : "repo-dashboard__action add"
+            }
+            onClick={this.handleClick}
+          >
+            ADD TO LIST
+          </button>
         </div>
       </div>
     );

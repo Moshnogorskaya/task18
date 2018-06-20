@@ -5,9 +5,9 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import faStar from "@fortawesome/fontawesome-free-solid/faStar";
 
 class RepoListView extends Component {
-handleClick = () => {
-  this.props.onChangeRepo(this.props.repo.id);
-}
+  handleClick = () => {
+    this.props.onChangeRepo(this.props.repo.id);
+  };
 
   render() {
     const repo = this.props.repo;
@@ -15,7 +15,7 @@ handleClick = () => {
       <div className="repo">
         <div className="wrapper-repo-action">
           <div
-          onClick={this.handleClick}
+            onClick={this.handleClick}
             className={
               repo.archived ? "repo__action delete" : "repo__action add"
             }
