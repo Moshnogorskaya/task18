@@ -49,7 +49,7 @@ class Search extends Component {
           repo.description = cutString(repo.description, 90);
           return repo;
         });
-        this.props.onSearchComplete(repos);
+        this.props.onChangeRepos(repos);
         this.timer = setTimeout(() => this.setState({ waiting: false }), 2000);
       });
   };

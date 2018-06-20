@@ -6,20 +6,20 @@
   padding-top: 32px;
 }
 
-.repo__add {
+.repo__action {
   outline: 1px solid #0366d6;
-  border: 2px solid white;
+  border: 3px solid white;
   height: 15px;
   width: 15px;
 }
 
-/* .repo__delete {
-    outline: 1px solid #0366d6;
-    border: 0.5vh solid white;
-    height: 2.5vh;
-    width: 2.5vh;
-    background: #0366d6;
-  } */
+.repo__action.add {
+  background: white;
+}
+
+.repo__action.delete {
+  background: #0366d6;
+}
 
 .repo__info {
   flex-direction: column;
@@ -44,17 +44,9 @@
   overflow-y: auto;
 }
 
-/* .repo__description.big {
-    height: 70%;
-  } */
-
 .repo__topics {
   height: 35px;
 }
-
-/* .repo__topics.hidden {
-    display: none;
-  } */
 
 .topics__item {
   font-size: 10px;

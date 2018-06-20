@@ -7,17 +7,6 @@ import Search from "./../search/search";
 import MyList from "./../my-list/my-list";
 import Footer from "./footer";
 
-let repo = {
-  id: 1,
-  name: "Repo",
-  description: "description",
-  language: "Language",
-  html_url: "url",
-  stargazers_count: 100,
-  archived: false,
-  topics: ["topic", "topic"]
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,14 +15,13 @@ class App extends Component {
     };
   }
 
-  handleSearchComplete = repos => {
+  handleChangeRepos = repos => {
     this.setState({
       repos: repos
     });
   };
 
   render() {
-    let repos = this.state.repos;
     return (
       <div className="app">
         <BrowserRouter>
@@ -48,7 +36,7 @@ class App extends Component {
                   <Search
                     {...props}
                     repos={this.state.repos}
-                    onSearchComplete={this.handleSearchComplete}
+                    onChangeRepos={this.handleChangeRepos}
                   />
                 )}
               />
@@ -58,7 +46,7 @@ class App extends Component {
                   <Search
                     {...props}
                     repos={this.state.repos}
-                    onSearchComplete={this.handleSearchComplete}
+                    onChangeRepos={this.handleChangeRepos}
                   />
                 )}
               />

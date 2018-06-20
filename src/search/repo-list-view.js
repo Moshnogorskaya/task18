@@ -5,12 +5,33 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import faStar from "@fortawesome/fontawesome-free-solid/faStar";
 
 class RepoListView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      repo: this.props.repo,
+    };
+  }
+
+
+handleClick = () => {
+  let newRepo = Object.assign({}, this.state.repo);
+  newRepo.archived = !newRepo.archived;
+  this.setState({
+    repo: newRepo,
+  })
+}
+
   render() {
-    const repo = this.props.repo;
+    const repo = this.state.repo;
     return (
       <div className="repo">
         <div className="wrapper-repo-action">
-          <div className="repo__add" />
+          <div
+          onClick={this.handleClick}
+            className={
+              repo.archived ? "repo__action delete" : "repo__action add"
+            }
+          />
         </div>
         <div className="repo__info">
           <a href={repo.html_url} className="repo__name">
