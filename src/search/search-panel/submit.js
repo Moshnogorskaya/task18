@@ -21,4 +21,3 @@ class Submit extends Component {
 }
 
 export default Submit;
-("search__button");

@@ -58,7 +58,7 @@ class Search extends Component {
   };
 
   handleSearchSubmit = url => {
-    console.log(this.props.repos);
+    console.log(this.props);
     if (!this.state.waiting) {
       this.setState({
         waiting: true
