@@ -13,7 +13,7 @@ class Select extends Component {
   handleChange(e) {
     this.props.onChangeValue(e.target.value);
     this.setState({
-      active: e.value
+      active: e.target.value
     });
   }
 
