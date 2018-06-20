@@ -5,15 +5,24 @@ import RepoListView from "./repo-list-view";
 import RepoDashboardView from "./repo-dashboard-view";
 
 class Results extends Component {
-  render() {
-    let isList = this.props.isList;
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     repos: this.props.repos,
+  //   }
+  // }
 
-    if (isList) {
+handleChangeRepo = (id) => {
+this.props.onChangeRepo(id);
+}
+
+  render() {
+    if (this.props.isList) {
       return (
         <ul className="results-list">
           {this.props.repos.map(repo => (
             <li key={repo.id} className="results-list__item">
-              <RepoListView repo={repo} />
+              <RepoListView repo={repo} id={repo.id} onChangeRepo={this.handleChangeRepo}/>
             </li>
           ))}
         </ul>

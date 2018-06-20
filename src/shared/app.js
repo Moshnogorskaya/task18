@@ -21,6 +21,16 @@ class App extends Component {
     });
   };
 
+  handleChangeRepo = (id) => {
+    console.log('repo changed', id);
+    let newRepos = [...this.state.repos];
+    let changedRepo = newRepos.find(repo => repo.id === id);
+    changedRepo.archived = !changedRepo.archived;
+    this.setState({
+      repos: newRepos,
+    })
+    }
+
   render() {
     return (
       <div className="app">
@@ -37,6 +47,7 @@ class App extends Component {
                     {...props}
                     repos={this.state.repos}
                     onChangeRepos={this.handleChangeRepos}
+                    onChangeRepo={this.handleChangeRepo}
                   />
                 )}
               />
@@ -47,6 +58,7 @@ class App extends Component {
                     {...props}
                     repos={this.state.repos}
                     onChangeRepos={this.handleChangeRepos}
+                    onChangeRepo={this.handleChangeRepo}
                   />
                 )}
               />
