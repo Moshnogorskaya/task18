@@ -51,13 +51,14 @@ class Search extends Component {
           return repo;
         });
         this.setState({
-          repos: repos,
+          repos: repos
         });
-        setTimeout(() => this.setState({ waiting: false}), 2000);
+        this.timer = setTimeout(() => this.setState({ waiting: false }), 2000);
       });
   };
 
   handleSearchSubmit = url => {
+    console.log(this.props.repos);
     if (!this.state.waiting) {
       this.setState({
         waiting: true
@@ -66,10 +67,17 @@ class Search extends Component {
     }
   };
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
   render() {
     return (
       <div className="search">
-        <SearchPanel onSearchSubmit={this.handleSearchSubmit} waiting={this.state.waiting}/>
+        <SearchPanel
+          onSearchSubmit={this.handleSearchSubmit}
+          waiting={this.state.waiting}
+        />
         {this.state.repos && this.state.repos.length ? (
           <div className="wrapper-results">
             <ToggleView
