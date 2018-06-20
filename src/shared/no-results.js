@@ -5,9 +5,9 @@ class NoResults extends Component {
   render() {
     return (
       <div className="no-results-group">
-        <h1 className="no-results-group__heading">NO RESULTS FOUND</h1>
+        <h1 className="no-results-group__heading">{this.props.heading}</h1>
         <p className="no-results-group__text">
-          select other parameters and try again
+          {this.props.text}
         </p>
         <div className="no-results-group__image" />
       </div>

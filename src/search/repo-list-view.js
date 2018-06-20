@@ -5,20 +5,7 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import faStar from "@fortawesome/fontawesome-free-solid/faStar";
 
 class RepoListView extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     repo: this.props.repo,
-  //   };
-  // }
-
-
 handleClick = () => {
-  // let newRepo = Object.assign({}, this.state.repo);
-  // newRepo.archived = !newRepo.archived;
-  // this.setState({
-  //   repo: newRepo,
-  // })
   this.props.onChangeRepo(this.props.repo.id);
 }
 

@@ -5,9 +5,9 @@
 }
 
 .my-list__heading {
-  height: 7vh;
+  height: 60px;
   font-weight: normal;
   justify-content: flex-start;
   width: 100%;
-  padding-top: 2vh;
+  padding-top: 30px;
 }

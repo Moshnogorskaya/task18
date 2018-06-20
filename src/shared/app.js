@@ -21,17 +21,18 @@ class App extends Component {
     });
   };
 
-  handleChangeRepo = (id) => {
-    console.log('repo changed', id);
+  handleChangeRepo = id => {
+    console.log("repo changed", id);
     let newRepos = [...this.state.repos];
     let changedRepo = newRepos.find(repo => repo.id === id);
     changedRepo.archived = !changedRepo.archived;
     this.setState({
-      repos: newRepos,
-    })
-    }
+      repos: newRepos
+    });
+  };
 
   render() {
+    console.log(this.state.repos);
     return (
       <div className="app">
         <BrowserRouter>
@@ -62,7 +63,10 @@ class App extends Component {
                   />
                 )}
               />
-              <Route path="/my-list" render={props => <MyList {...props} />} />
+              <Route
+                path="/my-list"
+                render={props => <MyList {...props} repos={this.state.repos} />}
+              />
             </Switch>
           </div>
         </BrowserRouter>

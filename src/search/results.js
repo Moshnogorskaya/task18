@@ -5,13 +5,6 @@ import RepoListView from "./repo-list-view";
 import RepoDashboardView from "./repo-dashboard-view";
 
 class Results extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     repos: this.props.repos,
-  //   }
-  // }
-
 handleChangeRepo = (id) => {
 this.props.onChangeRepo(id);
 }

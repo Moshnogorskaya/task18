@@ -63,9 +63,9 @@ class Search extends Component {
     }
   };
 
-  handleChangeRepo = (id) => {
+  handleChangeRepo = id => {
     this.props.onChangeRepo(id);
-    }
+  };
 
   componentWillUnmount() {
     clearTimeout(this.timer);
@@ -85,10 +85,17 @@ class Search extends Component {
               onListToggle={this.handleListToggle}
               isList={this.state.isList}
             />
-            <Results isList={this.state.isList} repos={this.props.repos} onChangeRepo={this.handleChangeRepo}/>
+            <Results
+              isList={this.state.isList}
+              repos={this.props.repos}
+              onChangeRepo={this.handleChangeRepo}
+            />
           </div>
         ) : (
-          <NoResults />
+          <NoResults
+            heading="NO RESULTS FOUND"
+            text="select other parameters and try again"
+          />
         )}
       </div>
     );
