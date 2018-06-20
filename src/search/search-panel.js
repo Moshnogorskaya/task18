@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import "./search-panel.css";
 
 import Select from "./search-panel/select";
@@ -7,7 +8,7 @@ import Submit from "./search-panel/submit";
 
 const types = [
   {value: 'type', label: 'Type'},
-  {value: 'repository', label: 'Repository'}];
+  {value: 'repositories', label: 'Repositories'}];
 
 const languages = [
   {value: 'language', label: 'Language'},
@@ -27,36 +28,33 @@ const languages = [
 class SearchPanel extends Component {
   constructor(props) {
     super(props);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.handleLanguageChange = this.handleLanguageChange.bind(this);
-    this.handleKeywordChange = this.handleKeywordChange.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
     this.state = {
       type: "",
       language: "",
       keyword: "",
-      isValid: true
+      isValid: true,
+      repos: [],
     };
   }
-  handleTypeChange(type) {
+  handleTypeChange = (type) => {
     this.setState({
       type: type.toLowerCase(),
       isValid: true
     });
   }
 
-  handleLanguageChange(language) {
+  handleLanguageChange = (language) => {
     this.setState({
       language: language.toLowerCase(),
     });
   }
 
-  handleKeywordChange(keyword) {
+  handleKeywordChange = (keyword) => {
     this.setState({
       keyword: keyword.toLowerCase()
     });
   }
-  handleButtonClick() {
+  handleButtonClick = () => {
     if (this.state.type.length) {
       this.setState({
         isValid: true
@@ -70,8 +68,8 @@ class SearchPanel extends Component {
   }
 
   getRepos(type, language, keyword) {
-    const url = `https://api.github.com/search/${type}?q=${keyword}language:${language}&sort=stars&order=desc`;
-    console.log(url);
+    const url = `https://api.github.com/search/${type}?q=${keyword}+language:${language}&sort=stars&order=desc`;
+    axios.get(url).then(response => console.log(response.data.items));
   }
 
   render() {
