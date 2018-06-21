@@ -5,6 +5,14 @@ import './styles/results.css';
 import RepoListView from './repo-list-view';
 import RepoDashboardView from './repo-dashboard-view';
 
+function View(MyComponent, classNameItem, repos, handler) {
+  return repos.map(repo => (
+    <li key={repo.id} className={classNameItem}>
+      <MyComponent repo={repo} id={repo.id} onChangeRepo={handler} />
+    </li>
+  ));
+}
+
 class Results extends Component {
   handleChangeRepo = id => this.props.onChangeRepo(id);
 
@@ -12,29 +20,23 @@ class Results extends Component {
     if (this.props.isList) {
       return (
         <ul className="results-list">
-          {this.props.repos.map(repo => (
-            <li key={repo.id} className="results-list__item">
-              <RepoListView
-                repo={repo}
-                id={repo.id}
-                onChangeRepo={this.handleChangeRepo}
-              />
-            </li>
-          ))}
+          {View(
+            RepoListView,
+            'results-list__item',
+            this.props.repos,
+            this.handleChangeRepo,
+          )}
         </ul>
       );
     }
     return (
       <ul className="results-dashboard">
-        {this.props.repos.map(repo => (
-          <li key={repo.id} className="results-dashboard__item">
-            <RepoDashboardView
-              repo={repo}
-              id={repo.id}
-              onChangeRepo={this.handleChangeRepo}
-            />
-          </li>
-        ))}
+        {View(
+          RepoDashboardView,
+          'results-dashboard__item',
+          this.props.repos,
+          this.handleChangeRepo,
+        )}
       </ul>
     );
   }

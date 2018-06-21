@@ -18,11 +18,9 @@ class RepoDashboardView extends Component {
         <InfoDashboard repo={repo} />
         <div className="button-wrapper">
           <button
-            className={
-              repo.archived
-                ? 'repo-dashboard__action delete'
-                : 'repo-dashboard__action add'
-            }
+            className={`repo-dashboard__action ${
+              repo.archived ? 'delete' : 'add'
+            }`}
             onClick={this.handleClick}
           >
             {repo.archived ? 'REMOVE FROM LIST' : 'ADD TO LIST'}

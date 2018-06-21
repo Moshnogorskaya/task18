@@ -17,20 +17,15 @@ class ToggleView extends Component {
     return (
       <div className="view">
         <button
-          className={
-            !this.props.isList ? 'view__dashboard active' : 'view__dashboard'
-          }
+          className={`view__dashboard ${!this.props.isList ? 'active' : ''}`}
         >
           <FontAwesomeIcon
             icon={faThLarge}
             onClick={this.handleDashboardClick}
           />
         </button>
-        <button className={this.props.isList ? 'view__list active' : 'view__list'}>
-          <FontAwesomeIcon
-            icon={faBars}
-            onClick={this.handleListClick}
-          />
+        <button className={`view__list ${this.props.isList ? 'active' : ''}`}>
+          <FontAwesomeIcon icon={faBars} onClick={this.handleListClick} />
         </button>
       </div>
     );

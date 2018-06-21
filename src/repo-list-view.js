@@ -16,9 +16,7 @@ class RepoListView extends Component {
         <div className="wrapper-repo-action">
           <button
             onClick={this.handleClick}
-            className={
-              repo.archived ? 'repo__action delete' : 'repo__action add'
-            }
+            className={`repo__action ${repo.archived ? 'delete' : 'add'}`}
           />
         </div>
         <InfoList repo={repo} />

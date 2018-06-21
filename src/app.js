@@ -7,6 +7,24 @@ import Search from './search';
 import MyList from './my-list';
 import Footer from './footer';
 
+function CustomRoute(props) {
+  const MyComponent = props.component;
+  const self = props.self;
+  return (
+    <Route
+      path={props.path}
+      render={props => (
+        <MyComponent
+          {...props}
+          repos={self.state.repos}
+          onChangeRepos={self.handleChangeRepos}
+          onChangeRepo={self.handleChangeRepo}
+        />
+                )}
+    />
+  );
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -37,9 +55,10 @@ class App extends Component {
           <div className="wrapper">
             <Header />
 
-            <Switch>
-              <Route exact path="/" render={() => <Redirect to="/search" />} />
-              <Route
+
+            <Route exact path="/" render={() => <Redirect to="/search" />} />
+            <CustomRoute path="/search" component={Search} self={this} />
+            {/* <Route
                 path="/search"
                 render={props => (
                   <Search
@@ -49,18 +68,18 @@ class App extends Component {
                     onChangeRepo={this.handleChangeRepo}
                   />
                 )}
-              />
-              <Route
-                path="/my-list"
-                render={props => (
+              /> */}
+            <Route
+              path="/my-list"
+              render={props => (
                   <MyList
                     {...props}
                     repos={this.state.repos}
                     onChangeRepo={this.handleChangeRepo}
                   />
                 )}
-              />
-            </Switch>
+            />
+
           </div>
         </BrowserRouter>
 

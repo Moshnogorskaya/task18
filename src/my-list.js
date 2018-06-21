@@ -34,7 +34,7 @@ class MyList extends Component {
     const savedRepos = this.props.repos.filter(repo => repo.archived);
     return (
       <div className="my-list">
-        <h1 className="my-list__heading">My List</h1>{' '}
+        <h1 className="my-list__heading">My List</h1>
         {savedRepos && savedRepos.length ? (
           <div className="wrapper-results">
             <ToggleView

@@ -23,11 +23,9 @@ class Select extends Component {
     const options = this.props.options.slice(1);
     return (
       <div
-        className={
-          this.props.required && !this.props.isValid
-            ? 'select__group warning'
-            : 'select__group'
-        }
+        className={`select__group ${
+          this.props.required && !this.props.isValid ? 'warning' : ''
+        }`}
       >
         <select
           onChange={this.handleChange}

@@ -16,14 +16,14 @@ class InputKeywords extends Component {
     this.setState({
       active: true,
     });
-  }
+  };
 
   handleInput = (e) => {
     this.setState({
       value: e.target.value,
     });
     this.props.onChangeValue(e.target.value);
-  }
+  };
 
   handleBlur = () => {
     if (!this.state.value) {
@@ -31,16 +31,12 @@ class InputKeywords extends Component {
         active: false,
       });
     }
-  }
+  };
   render() {
     return (
       <div className="input">
         <p
-          className={
-            this.state.active
-              ? 'input__placeholder active'
-              : 'input__placeholder'
-          }
+          className={`input__placeholder ${this.state.active ? 'active' : ''}`}
         >
           Type here for search
         </p>

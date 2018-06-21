@@ -11,9 +11,7 @@ class Submit extends Component {
   render() {
     return (
       <button
-        className={
-          this.props.disabled ? 'search__button disabled' : 'search__button'
-        }
+        className={`search__button ${this.props.disabled ? 'disabled' : ''}`}
         onClick={this.handleClick}
       >
         <span>SEARCH</span>
