@@ -14,6 +14,19 @@ function cutString(string, desiredLength) {
   return `${string.slice(0, desiredLength)}...`;
 }
 
+function prepareDataToDisplay(repo, savedRepos) {
+  repo.topics = repo.topics.slice(0, 3);
+  repo.description = cutString(repo.description, 90);
+  const ids = findSavedIDs(savedRepos);
+  repo.archived = ids.includes(repo.id);
+  return repo;
+}
+
+function findSavedIDs(repos) {
+  let savedRepos = repos.filter(repo => repo.archived);
+  return savedRepos.map(repo => repo.id);
+}
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -43,12 +56,7 @@ class Search extends Component {
       })
       .then(response => {
         const repos = response.data.items;
-        repos.map(repo => {
-          repo.archived = false;
-          repo.topics = repo.topics.slice(0, 3);
-          repo.description = cutString(repo.description, 90);
-          return repo;
-        });
+        repos.map(repo => prepareDataToDisplay(repo, this.props.repos));
         this.props.onChangeRepos(repos);
         this.timer = setTimeout(() => this.setState({ waiting: false }), 2000);
       });
