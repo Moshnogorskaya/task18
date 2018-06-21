@@ -10,11 +10,6 @@ import prepareDataToDisplay from './utility/prepare-data-to-display';
 import getGithubData from './utility/get-girhub-data';
 
 class Search extends Component {
-  propTypes = {
-    onChangeRepo: PropTypes.func,
-    onChangeRepos: PropTypes.func,
-    repos: PropTypes.arrayOf(PropTypes.object),
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -28,13 +23,12 @@ class Search extends Component {
   }
 
   getRepos = (url) => {
-    getGithubData(url)
-      .then((response) => {
-        const repos = response.data.items;
-        repos.map(repo => prepareDataToDisplay(repo, this.props.repos));
-        this.props.onChangeRepos(repos);
-        this.timer = setTimeout(() => this.setState({ waiting: false }), 2000);
-      });
+    getGithubData(url).then((response) => {
+      const repos = response.data.items;
+      repos.map(repo => prepareDataToDisplay(repo, this.props.repos));
+      this.props.onChangeRepos(repos);
+      this.timer = setTimeout(() => this.setState({ waiting: false }), 2000);
+    });
   };
 
   handleListToggle = () => {
@@ -92,5 +86,17 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  onChangeRepo: PropTypes.func,
+  onChangeRepos: PropTypes.func,
+  repos: PropTypes.arrayOf(PropTypes.object),
+};
+
+Search.defaultProps = {
+  onChangeRepo() {},
+  onChangeRepos() {},
+  repos: [],
+};
 
 export default Search;

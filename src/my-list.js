@@ -7,10 +7,6 @@ import Results from './results';
 import ToggleView from './toggle-view';
 
 class MyList extends Component {
-  propTypes = {
-    onChangeRepo: PropTypes.func,
-    repos: PropTypes.arrayOf(PropTypes.object),
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -59,5 +55,15 @@ class MyList extends Component {
     );
   }
 }
+
+MyList.propTypes = {
+  onChangeRepo: PropTypes.func,
+  repos: PropTypes.arrayOf(PropTypes.object),
+};
+
+MyList.defaultProps = {
+  onChangeRepo() {},
+  repos: [],
+};
 
 export default MyList;

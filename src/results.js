@@ -6,11 +6,6 @@ import RepoListView from './repo-list-view';
 import RepoDashboardView from './repo-dashboard-view';
 
 class Results extends Component {
-  propTypes = {
-    repos: PropTypes.arrayOf(PropTypes.object),
-    onChangeRepo: PropTypes.func,
-    isList: PropTypes,
-  };
   handleChangeRepo = id => this.props.onChangeRepo(id);
 
   render() {
@@ -44,5 +39,17 @@ class Results extends Component {
     );
   }
 }
+
+Results.propTypes = {
+  repos: PropTypes.arrayOf(PropTypes.object),
+  onChangeRepo: PropTypes.func,
+  isList: PropTypes.bool,
+};
+
+Results.defaultProps = {
+  repos: [],
+  onChangeRepo() {},
+  isList: true,
+};
 
 export default Results;

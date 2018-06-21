@@ -4,34 +4,28 @@ import PropTypes from 'prop-types';
 import './styles/input-keywords.css';
 
 class InputKeywords extends Component {
-  propTypes = {
-    onChangeValue: PropTypes.func,
-  };
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
     this.state = {
       active: false,
       value: '',
     };
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState({
       active: true,
     });
   }
 
-  handleInput(e) {
+  handleInput = (e) => {
     this.setState({
       value: e.target.value,
     });
     this.props.onChangeValue(e.target.value);
   }
 
-  handleBlur() {
+  handleBlur = () => {
     if (!this.state.value) {
       this.setState({
         active: false,
@@ -62,5 +56,13 @@ class InputKeywords extends Component {
     );
   }
 }
+
+InputKeywords.propTypes = {
+  onChangeValue: PropTypes.func,
+};
+
+InputKeywords.defaultProps = {
+  onChangeValue() {},
+};
 
 export default InputKeywords;

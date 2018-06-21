@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 import './styles/select.css';
 
 class Select extends Component {
-  propTypes = {
-    onChangeValue: PropTypes.func,
-    options: PropTypes.arrayOf(PropTypes.object),
-    required: PropTypes.bool,
-    isValid: PropTypes.bool,
-  };
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -54,5 +48,19 @@ class Select extends Component {
     );
   }
 }
+
+Select.propTypes = {
+  onChangeValue: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.object),
+  required: PropTypes.bool,
+  isValid: PropTypes.bool,
+};
+
+Select.defaultProps = {
+  onChangeValue() {},
+  options: [],
+  required: false,
+  isValid: true,
+};
 
 export default Select;

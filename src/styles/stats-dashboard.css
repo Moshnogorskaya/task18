@@ -1,0 +1,21 @@
+.repo-dashboard__stats {
+  height: 20%;
+  justify-content: space-between;
+}
+.repo-dashboard__language {
+  color: #999999;
+  font-size: 12px;
+  align-items: center;
+}
+.repo-dashboard__stars {
+  font-size: 18px;
+  align-items: center;
+}
+
+.stars__icon {
+  color: #f1e05a;
+  margin-right: 6px;
+  font-size: 18px;
+  position: relative;
+  top: -2px;
+}

@@ -6,12 +6,6 @@ import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 import './styles/toggle-view.css';
 
 class ToggleView extends Component {
-  propTypes = {
-    onDashboardToggle: PropTypes.func,
-    onListToggle: PropTypes.func,
-    isList: PropTypes.bool,
-  };
-
   handleDashboardClick = () => {
     this.props.onDashboardToggle();
   };
@@ -39,5 +33,17 @@ class ToggleView extends Component {
     );
   }
 }
+
+ToggleView.propTypes = {
+  onDashboardToggle: PropTypes.func,
+  onListToggle: PropTypes.func,
+  isList: PropTypes.bool,
+};
+
+ToggleView.defaultProps = {
+  onDashboardToggle() {},
+  onListToggle() {},
+  isList: true,
+};
 
 export default ToggleView;

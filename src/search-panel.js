@@ -28,10 +28,6 @@ const languages = [
 ];
 
 class SearchPanel extends Component {
-  propTypes = {
-    onSearchSubmit: PropTypes.func,
-    waiting: PropTypes.bool,
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -99,5 +95,15 @@ class SearchPanel extends Component {
     );
   }
 }
+
+SearchPanel.propTypes = {
+  onSearchSubmit: PropTypes.func,
+  waiting: PropTypes.bool,
+};
+
+SearchPanel.defaultProps = {
+  onSearchSubmit() {},
+  waiting: false,
+};
 
 export default SearchPanel;
