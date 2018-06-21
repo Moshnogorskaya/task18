@@ -5,6 +5,7 @@ import './styles/search-panel.css';
 import Select from './select';
 import InputKeywords from './input-keywords';
 import Submit from './submit';
+import composeUrl from './utility/compose-url';
 
 const types = [
   { value: 'type', label: 'Type' },
@@ -63,10 +64,11 @@ class SearchPanel extends Component {
       this.setState({
         isValid: true,
       });
-      const url = `https://api.github.com/search/${this.state.type}?q=${
-        this.state.keyword
-      }+language:${this.state.language}&sort=stars&order=desc`;
-      this.props.onSearchSubmit(url);
+      this.props.onSearchSubmit(composeUrl(
+        this.state.type,
+        this.state.language,
+        this.state.keyword,
+      ));
     } else {
       this.setState({
         isValid: false,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import './styles/search.css';
 
@@ -7,27 +6,8 @@ import SearchPanel from './search-panel';
 import NoResults from './no-results';
 import Results from './results';
 import ToggleView from './toggle-view';
-
-function cutString(string, desiredLength) {
-  if (!string || string.length < desiredLength) {
-    return string;
-  }
-  return `${string.slice(0, desiredLength)}...`;
-}
-
-function findSavedIDs(repos) {
-  const savedRepos = repos.filter(repo => repo.archived);
-  return savedRepos.map(repo => repo.id);
-}
-
-function prepareDataToDisplay(repo, savedRepos) {
-  const newRepo = repo;
-  newRepo.topics = newRepo.topics.slice(0, 3);
-  newRepo.description = cutString(repo.description, 90);
-  const ids = findSavedIDs(savedRepos);
-  newRepo.archived = ids.includes(repo.id);
-  return newRepo;
-}
+import prepareDataToDisplay from './utility/prepare-data-to-display';
+import getGithubData from './utility/get-girhub-data';
 
 class Search extends Component {
   propTypes = {
@@ -48,12 +28,7 @@ class Search extends Component {
   }
 
   getRepos = (url) => {
-    axios
-      .get(url, {
-        headers: {
-          Accept: 'application/vnd.github.mercy-preview+json',
-        },
-      })
+    getGithubData(url)
       .then((response) => {
         const repos = response.data.items;
         repos.map(repo => prepareDataToDisplay(repo, this.props.repos));
