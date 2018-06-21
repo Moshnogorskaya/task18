@@ -13,6 +13,23 @@ class MyList extends Component {
     };
   }
 
+  handleDashboardToggle = () => {
+    this.setState({
+      isList: false
+    });
+  };
+
+  handleListToggle = () => {
+    this.setState({
+      isList: true
+    });
+  };
+
+  handleChangeRepo = id => {
+    this.props.onChangeRepo(id);
+  };
+
+
   render() {
     let savedRepos = this.props.repos.filter(repo => repo.archived);
     return (

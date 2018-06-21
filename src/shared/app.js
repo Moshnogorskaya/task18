@@ -63,7 +63,7 @@ class App extends Component {
               />
               <Route
                 path="/my-list"
-                render={props => <MyList {...props} repos={this.state.repos} />}
+                render={props => <MyList {...props} repos={this.state.repos} onChangeRepo={this.handleChangeRepo}/>}
               />
             </Switch>
           </div>

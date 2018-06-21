@@ -12,7 +12,6 @@ class RepoDashboardView extends Component {
   render() {
     const repo = this.props.repo;
 
-    
     return (
       <div className="repo-dashboard">
         <div className="repo-dashboard__stats">
@@ -47,9 +46,7 @@ class RepoDashboardView extends Component {
             }
             onClick={this.handleClick}
           >
-            {repo.archived
-                ? "REMOVE FROM LIST"
-                : "ADD TO LIST"}
+            {repo.archived ? "REMOVE FROM LIST" : "ADD TO LIST"}
           </button>
         </div>
       </div>
