@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './styles/app.css';
 
 import Header from './header';
@@ -9,18 +10,18 @@ import Footer from './footer';
 
 function CustomRoute(props) {
   const MyComponent = props.component;
-  const self = props.self;
+  const { self } = props;
   return (
     <Route
       path={props.path}
-      render={props => (
+      render={ownProps => (
         <MyComponent
-          {...props}
+          {...ownProps}
           repos={self.state.repos}
           onChangeRepos={self.handleChangeRepos}
           onChangeRepo={self.handleChangeRepo}
         />
-                )}
+      )}
     />
   );
 }
@@ -54,32 +55,9 @@ class App extends Component {
         <BrowserRouter>
           <div className="wrapper">
             <Header />
-
-
             <Route exact path="/" render={() => <Redirect to="/search" />} />
             <CustomRoute path="/search" component={Search} self={this} />
-            {/* <Route
-                path="/search"
-                render={props => (
-                  <Search
-                    {...props}
-                    repos={this.state.repos}
-                    onChangeRepos={this.handleChangeRepos}
-                    onChangeRepo={this.handleChangeRepo}
-                  />
-                )}
-              /> */}
-            <Route
-              path="/my-list"
-              render={props => (
-                  <MyList
-                    {...props}
-                    repos={this.state.repos}
-                    onChangeRepo={this.handleChangeRepo}
-                  />
-                )}
-            />
-
+            <CustomRoute path="/my-list" component={MyList} self={this} />
           </div>
         </BrowserRouter>
 
@@ -88,5 +66,17 @@ class App extends Component {
     );
   }
 }
+
+CustomRoute.propTypes = {
+  component: PropTypes.func,
+  self: PropTypes.shape({}),
+  path: PropTypes.string,
+};
+
+CustomRoute.defaultProps = {
+  component: Search,
+  self: App,
+  path: '',
+};
 
 export default App;
