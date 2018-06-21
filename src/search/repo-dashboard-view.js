@@ -47,7 +47,9 @@ class RepoDashboardView extends Component {
             }
             onClick={this.handleClick}
           >
-            ADD TO LIST
+            {repo.archived
+                ? "REMOVE FROM LIST"
+                : "ADD TO LIST"}
           </button>
         </div>
       </div>
