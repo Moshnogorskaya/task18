@@ -5,12 +5,23 @@ import './styles/results.css';
 import RepoListView from './repo-list-view';
 import RepoDashboardView from './repo-dashboard-view';
 
-function View(MyComponent, classNameItem, repos, handler) {
-  return repos.map(repo => (
-    <li key={repo.id} className={classNameItem}>
-      <MyComponent repo={repo} id={repo.id} onChangeRepo={handler} />
-    </li>
-  ));
+function View(props) {
+  const { self } = props;
+  const { repos } = self.props;
+  const MyComponent = props.component;
+  return (
+    <ul className={props.classNameArray}>
+      {repos.map(repo => (
+        <li key={repo.id} className={props.classNameItem}>
+          <MyComponent
+            repo={repo}
+            id={repo.id}
+            onChangeRepo={self.handleChangeRepo}
+          />
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 class Results extends Component {
@@ -19,37 +30,45 @@ class Results extends Component {
   render() {
     if (this.props.isList) {
       return (
-        <ul className="results-list">
-          {View(
-            RepoListView,
-            'results-list__item',
-            this.props.repos,
-            this.handleChangeRepo,
-          )}
-        </ul>
+        <View
+          component={RepoListView}
+          classNameArray="results-list"
+          classNameItem="results-list__item"
+          self={this}
+        />
       );
     }
     return (
-      <ul className="results-dashboard">
-        {View(
-          RepoDashboardView,
-          'results-dashboard__item',
-          this.props.repos,
-          this.handleChangeRepo,
-        )}
-      </ul>
+      <View
+        component={RepoDashboardView}
+        classNameArray="results-dashboard"
+        classNameItem="results-dashboard__item"
+        self={this}
+      />
     );
   }
 }
 
+View.propTypes = {
+  self: PropTypes.shape({}),
+  component: PropTypes.func,
+  classNameArray: PropTypes.string,
+  classNameItem: PropTypes.string,
+};
+
+View.defaultProps = {
+  self: {},
+  component: RepoListView,
+  classNameArray: '',
+  classNameItem: '',
+};
+
 Results.propTypes = {
-  repos: PropTypes.arrayOf(PropTypes.object),
   onChangeRepo: PropTypes.func,
   isList: PropTypes.bool,
 };
 
 Results.defaultProps = {
-  repos: [],
   onChangeRepo() {},
   isList: true,
 };
