@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StatsDashboard from './utility/stats-dashboard';
-import ContentDashboard from './utility/content-dashboard';
+import InfoDashboard from './utility/info-dashboard';
 import './styles/repo-dashboard-view.css';
 
 class RepoDashboardView extends Component {
@@ -15,7 +15,7 @@ class RepoDashboardView extends Component {
     return (
       <div className="repo-dashboard">
         <StatsDashboard repo={repo} />
-        <ContentDashboard repo={repo} />
+        <InfoDashboard repo={repo} />
         <div className="button-wrapper">
           <button
             className={

@@ -6,26 +6,8 @@ import Select from './select';
 import InputKeywords from './input-keywords';
 import Submit from './submit';
 import composeUrl from './utility/compose-url';
-
-const types = [
-  { value: 'type', label: 'Type' },
-  { value: 'repositories', label: 'Repositories' },
-];
-
-const languages = [
-  { value: 'language', label: 'Language' },
-  { value: 'javascript', label: 'Javascript' },
-  { value: 'css', label: 'CSS' },
-  { value: 'html', label: 'HTML' },
-  { value: 'php', label: 'PHP' },
-  { value: 'ruby', label: 'Ruby' },
-  { value: 'c++', label: 'C++' },
-  { value: 'python', label: 'Python' },
-  { value: 'c#', label: 'C#' },
-  { value: 'java', label: 'Java' },
-  { value: 'go', label: 'Go' },
-  { value: 'haskell', label: 'Haskell' },
-];
+import types from './utility/types';
+import languages from './utility/languages';
 
 class SearchPanel extends Component {
   constructor(props) {

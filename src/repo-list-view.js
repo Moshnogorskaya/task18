@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StatsList from './utility/stats-list';
+import InfoList from './utility/info-list';
 import './styles/repo-list-view.css';
 
 class RepoListView extends Component {
@@ -20,21 +21,7 @@ class RepoListView extends Component {
             }
           />
         </div>
-        <div className="repo__info">
-          <a href={repo.html_url} className="repo__name">
-            {repo.name}
-          </a>
-          <p className="repo__description">{repo.description}</p>
-          <ul className="repo__topics topics">
-            {repo.topics
-              ? repo.topics.map(topic => (
-                <li key={Math.random()} className="topics__item">
-                  {topic}
-                </li>
-                ))
-              : null}
-          </ul>
-        </div>
+        <InfoList repo={repo} />
         <StatsList repo={repo} />
       </div>
     );

@@ -1,11 +1,9 @@
 .repo {
   width: 100%;
 }
-
 .wrapper-repo-action {
   padding-top: 32px;
 }
-
 .repo__action {
   outline: 1px solid #0366d6;
   border: 3px solid white;
@@ -13,77 +11,9 @@
   width: 15px;
   cursor: pointer;
 }
-
 .repo__action.add {
   background: white;
 }
-
 .repo__action.delete {
   background: #0366d6;
-}
-
-.repo__info {
-  flex-direction: column;
-  width: 100%;
-  padding-left: 15px;
-}
-
-.repo__name {
-  color: #0366d6;
-  font-size: 18px;
-  font-weight: 600;
-  text-decoration: none;
-  height: 30%;
-  align-items: flex-end;
-  margin-top: 6px;
-  width: fit-content;
-}
-.repo__description {
-  padding: 5px 0;
-  font-size: 12px;
-  font-weight: normal;
-  height: 26%;
-  overflow-y: auto;
-}
-
-.repo__topics {
-  height: 35px;
-}
-
-.topics__item {
-  font-size: 10px;
-  background: #f1f8fe;
-  border: 1px solid #f1f8fe;
-  border-radius: 10px;
-  height: 70%;
-  margin-right: 10px;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.repo__stats {
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px 30px 12px 0;
-}
-
-.repo__stars {
-  font-size: 16px;
-  align-items: center;
-  font-weight: 200;
-}
-
-.stars-group__icon {
-  color: #f1e05a;
-  font-size: 20px;
-  margin-right: 7px;
-  position: relative;
-  top: -2px;
-}
-
-.repo__language {
-  color: #999999;
-  font-size: 13px;
-  font-weight: 100;
 }

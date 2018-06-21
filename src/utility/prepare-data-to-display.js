@@ -12,7 +12,7 @@ function findSavedIDs(repos) {
 
 function prepareDataToDisplay(repo, savedRepos) {
   const newRepo = repo;
-  newRepo.topics = newRepo.topics.slice(0, 3);
+  newRepo.topics = newRepo.topics.slice(0, 4);
   newRepo.description = cutString(repo.description, 90);
   const ids = findSavedIDs(savedRepos);
   newRepo.archived = ids.includes(repo.id);

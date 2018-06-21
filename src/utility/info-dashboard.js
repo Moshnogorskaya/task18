@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './../styles/content-dashboard.css';
+import './../styles/info-dashboard.css';
 
-function ContentDashboard(props) {
+function InfoDashboard(props) {
   return (
     <div className="content-dashboard-wrapper">
       <a href={props.repo.html_url} className="repo-dashboard__name">
@@ -21,7 +21,7 @@ function ContentDashboard(props) {
     </div>);
 }
 
-ContentDashboard.propTypes = {
+InfoDashboard.propTypes = {
   repo: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -34,8 +34,8 @@ ContentDashboard.propTypes = {
   }),
 };
 
-ContentDashboard.defaultProps = {
+InfoDashboard.defaultProps = {
   repo: {},
 };
 
-export default ContentDashboard;
+export default InfoDashboard;

@@ -21,8 +21,8 @@
   height: 45%;
   overflow: hidden;
   padding-top: 1px;
+  flex-wrap: wrap;
 }
-
 .topics__item {
   font-size: 10px;
   background: #f1f8fe;

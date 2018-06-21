@@ -27,7 +27,10 @@ class ToggleView extends Component {
           />
         </button>
         <button className={this.props.isList ? 'view__list active' : 'view__list'}>
-          <FontAwesomeIcon icon={faBars} onClick={this.handleListClick} />
+          <FontAwesomeIcon
+            icon={faBars}
+            onClick={this.handleListClick}
+          />
         </button>
       </div>
     );

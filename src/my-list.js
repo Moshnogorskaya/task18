@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles/my-list.css';
 
-import NoResults from './no-results';
+import NoResults from './utility/no-results';
 import Results from './results';
 import ToggleView from './toggle-view';
 
