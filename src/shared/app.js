@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./app.css";
 
 import Header from "./header";
@@ -41,13 +41,9 @@ class App extends Component {
               <Route
                 exact
                 path="/"
-                render={props => (
-                  <Search
-                    {...props}
-                    repos={this.state.repos}
-                    onChangeRepos={this.handleChangeRepos}
-                    onChangeRepo={this.handleChangeRepo}
-                  />
+                render={() => (
+                  <Redirect to="/search"/>
+                
                 )}
               />
               <Route
