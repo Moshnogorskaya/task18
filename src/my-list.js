@@ -1,11 +1,16 @@
-import React, { Component } from "react";
-import "./my-list.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './styles/my-list.css';
 
-import NoResults from "../shared/no-results";
-import Results from "./../search/results";
-import ToggleView from "./../search/toggle-view";
+import NoResults from './no-results';
+import Results from './results';
+import ToggleView from './toggle-view';
 
 class MyList extends Component {
+  propTypes = {
+    onChangeRepo: PropTypes.func,
+    repos: PropTypes.arrayOf(PropTypes.object),
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -15,26 +20,25 @@ class MyList extends Component {
 
   handleDashboardToggle = () => {
     this.setState({
-      isList: false
+      isList: false,
     });
   };
 
   handleListToggle = () => {
     this.setState({
-      isList: true
+      isList: true,
     });
   };
 
-  handleChangeRepo = id => {
+  handleChangeRepo = (id) => {
     this.props.onChangeRepo(id);
   };
 
-
   render() {
-    let savedRepos = this.props.repos.filter(repo => repo.archived);
+    const savedRepos = this.props.repos.filter(repo => repo.archived);
     return (
       <div className="my-list">
-        <h1 className="my-list__heading">My List</h1>{" "}
+        <h1 className="my-list__heading">My List</h1>{' '}
         {savedRepos && savedRepos.length ? (
           <div className="wrapper-results">
             <ToggleView

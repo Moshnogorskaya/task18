@@ -1,16 +1,29 @@
-import React, { Component } from "react";
-import "./repo-dashboard-view.css";
-
-import FontAwesomeIcon from "@fortawesome/react-fontawesome";
-import faStar from "@fortawesome/fontawesome-free-solid/faStar";
+import React, { Component } from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faStar from '@fortawesome/fontawesome-free-solid/faStar';
+import PropTypes from 'prop-types';
+import './styles/repo-dashboard-view.css';
 
 class RepoDashboardView extends Component {
-  handleClick = e => {
+  propTypes = {
+    onChangeRepo: PropTypes.func,
+    repo: PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      language: PropTypes.string,
+      html_url: PropTypes.string,
+      stargazers_count: PropTypes.string,
+      archived: PropTypes.bool,
+      topics: PropTypes.arrayOf(PropTypes.string),
+    }),
+  };
+  handleClick = (e) => {
     e.preventDefault();
     this.props.onChangeRepo(this.props.repo.id);
   };
   render() {
-    const repo = this.props.repo;
+    const { repo } = this.props;
 
     return (
       <div className="repo-dashboard">
@@ -31,9 +44,9 @@ class RepoDashboardView extends Component {
         <ul className="repo-dashboard__topics topics">
           {repo.topics
             ? repo.topics.map(topic => (
-                <li key={Math.random()} className="topics__item">
-                  {topic}
-                </li>
+              <li key={Math.random()} className="topics__item">
+                {topic}
+              </li>
               ))
             : null}
         </ul>
@@ -41,12 +54,12 @@ class RepoDashboardView extends Component {
           <button
             className={
               repo.archived
-                ? "repo-dashboard__action delete"
-                : "repo-dashboard__action add"
+                ? 'repo-dashboard__action delete'
+                : 'repo-dashboard__action add'
             }
             onClick={this.handleClick}
           >
-            {repo.archived ? "REMOVE FROM LIST" : "ADD TO LIST"}
+            {repo.archived ? 'REMOVE FROM LIST' : 'ADD TO LIST'}
           </button>
         </div>
       </div>

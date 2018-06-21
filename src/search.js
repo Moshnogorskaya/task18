@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./search.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import './styles/search.css';
 
-import SearchPanel from "./search-panel";
-import NoResults from "./../shared/no-results";
-import Results from "./results";
-import ToggleView from "./toggle-view";
+import SearchPanel from './search-panel';
+import NoResults from './no-results';
+import Results from './results';
+import ToggleView from './toggle-view';
 
 function cutString(string, desiredLength) {
   if (!string || string.length < desiredLength) {
@@ -14,47 +15,46 @@ function cutString(string, desiredLength) {
   return `${string.slice(0, desiredLength)}...`;
 }
 
-function prepareDataToDisplay(repo, savedRepos) {
-  repo.topics = repo.topics.slice(0, 3);
-  repo.description = cutString(repo.description, 90);
-  const ids = findSavedIDs(savedRepos);
-  repo.archived = ids.includes(repo.id);
-  return repo;
-}
-
 function findSavedIDs(repos) {
-  let savedRepos = repos.filter(repo => repo.archived);
+  const savedRepos = repos.filter(repo => repo.archived);
   return savedRepos.map(repo => repo.id);
 }
 
+function prepareDataToDisplay(repo, savedRepos) {
+  const newRepo = repo;
+  newRepo.topics = newRepo.topics.slice(0, 3);
+  newRepo.description = cutString(repo.description, 90);
+  const ids = findSavedIDs(savedRepos);
+  newRepo.archived = ids.includes(repo.id);
+  return newRepo;
+}
+
 class Search extends Component {
+  propTypes = {
+    onChangeRepo: PropTypes.func,
+    onChangeRepos: PropTypes.func,
+    repos: PropTypes.arrayOf(PropTypes.object),
+  };
   constructor(props) {
     super(props);
     this.state = {
       isList: true,
-      waiting: false
+      waiting: false,
     };
   }
-  handleDashboardToggle = () => {
-    this.setState({
-      isList: false
-    });
-  };
 
-  handleListToggle = () => {
-    this.setState({
-      isList: true
-    });
-  };
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
 
-  getRepos = url => {
+  getRepos = (url) => {
     axios
       .get(url, {
         headers: {
-          Accept: "application/vnd.github.mercy-preview+json"
-        }
+          Accept: 'application/vnd.github.mercy-preview+json',
+        },
       })
-      .then(response => {
+      .then((response) => {
         const repos = response.data.items;
         repos.map(repo => prepareDataToDisplay(repo, this.props.repos));
         this.props.onChangeRepos(repos);
@@ -62,22 +62,30 @@ class Search extends Component {
       });
   };
 
-  handleSearchSubmit = url => {
+  handleListToggle = () => {
+    this.setState({
+      isList: true,
+    });
+  };
+
+  handleDashboardToggle = () => {
+    this.setState({
+      isList: false,
+    });
+  };
+
+  handleSearchSubmit = (url) => {
     if (!this.state.waiting) {
       this.setState({
-        waiting: true
+        waiting: true,
       });
       this.getRepos(url);
     }
   };
 
-  handleChangeRepo = id => {
+  handleChangeRepo = (id) => {
     this.props.onChangeRepo(id);
   };
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
 
   render() {
     return (

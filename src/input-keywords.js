@@ -1,7 +1,12 @@
-import React, { Component } from "react";
-import "./input-keywords.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import './styles/input-keywords.css';
 
 class InputKeywords extends Component {
+  propTypes = {
+    onChangeValue: PropTypes.func,
+  };
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -9,19 +14,19 @@ class InputKeywords extends Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.state = {
       active: false,
-      value: ""
+      value: '',
     };
   }
 
   handleClick() {
     this.setState({
-      active: true
+      active: true,
     });
   }
 
   handleInput(e) {
     this.setState({
-      value: e.target.value
+      value: e.target.value,
     });
     this.props.onChangeValue(e.target.value);
   }
@@ -29,7 +34,7 @@ class InputKeywords extends Component {
   handleBlur() {
     if (!this.state.value) {
       this.setState({
-        active: false
+        active: false,
       });
     }
   }
@@ -39,8 +44,8 @@ class InputKeywords extends Component {
         <p
           className={
             this.state.active
-              ? "input__placeholder active"
-              : "input__placeholder"
+              ? 'input__placeholder active'
+              : 'input__placeholder'
           }
         >
           Type here for search

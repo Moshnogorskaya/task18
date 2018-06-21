@@ -1,32 +1,32 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import "./app.css";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import './styles/app.css';
 
-import Header from "./header";
-import Search from "./../search/search";
-import MyList from "./../my-list/my-list";
-import Footer from "./footer";
+import Header from './header';
+import Search from './search';
+import MyList from './my-list';
+import Footer from './footer';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      repos: []
+      repos: [],
     };
   }
 
-  handleChangeRepos = repos => {
+  handleChangeRepos = (repos) => {
     this.setState({
-      repos: repos
+      repos,
     });
   };
 
-  handleChangeRepo = id => {
-    let newRepos = [...this.state.repos];
-    let changedRepo = newRepos.find(repo => repo.id === id);
+  handleChangeRepo = (id) => {
+    const newRepos = [...this.state.repos];
+    const changedRepo = newRepos.find(repo => repo.id === id);
     changedRepo.archived = !changedRepo.archived;
     this.setState({
-      repos: newRepos
+      repos: newRepos,
     });
   };
 
@@ -38,14 +38,7 @@ class App extends Component {
             <Header />
 
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <Redirect to="/search"/>
-                
-                )}
-              />
+              <Route exact path="/" render={() => <Redirect to="/search" />} />
               <Route
                 path="/search"
                 render={props => (
@@ -59,7 +52,13 @@ class App extends Component {
               />
               <Route
                 path="/my-list"
-                render={props => <MyList {...props} repos={this.state.repos} onChangeRepo={this.handleChangeRepo}/>}
+                render={props => (
+                  <MyList
+                    {...props}
+                    repos={this.state.repos}
+                    onChangeRepo={this.handleChangeRepo}
+                  />
+                )}
               />
             </Switch>
           </div>

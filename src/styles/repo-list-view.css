@@ -11,6 +11,7 @@
   border: 3px solid white;
   height: 15px;
   width: 15px;
+  cursor: pointer;
 }
 
 .repo__action.add {
@@ -35,6 +36,7 @@
   height: 30%;
   align-items: flex-end;
   margin-top: 6px;
+  width: fit-content;
 }
 .repo__description {
   padding: 5px 0;

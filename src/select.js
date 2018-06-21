@@ -1,31 +1,38 @@
-import React, { Component } from "react";
-import "./select.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './styles/select.css';
 
 class Select extends Component {
+  propTypes = {
+    onChangeValue: PropTypes.func,
+    options: PropTypes.arrayOf(PropTypes.object),
+    required: PropTypes.bool,
+    isValid: PropTypes.bool,
+  };
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      active: "placeholder"
+      active: 'placeholder',
     };
   }
 
   handleChange(e) {
     this.props.onChangeValue(e.target.value);
     this.setState({
-      active: e.target.value
+      active: e.target.value,
     });
   }
 
   render() {
-    let placeholder = this.props.options[0];
-    let options = this.props.options.slice(1);
+    const placeholder = this.props.options[0];
+    const options = this.props.options.slice(1);
     return (
       <div
         className={
           this.props.required && !this.props.isValid
-            ? "select__group warning"
-            : "select__group"
+            ? 'select__group warning'
+            : 'select__group'
         }
       >
         <select

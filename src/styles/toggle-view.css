@@ -2,7 +2,6 @@
   width: 100%;
   height: 77px;
   justify-content: flex-end;
-  color: #e0e0e0;
 }
 
 .view__dashboard {
@@ -12,6 +11,7 @@
   cursor: pointer;
   margin-right: 10px;
   font-size: 32px;
+  color: #e0e0e0;
 }
 
 .view__list {
@@ -20,9 +20,17 @@
   align-items: center;
   cursor: pointer;
   font-size: 36px;
+  color: #e0e0e0;
 }
 
 .view__dashboard.active,
 .view__list.active {
   color: #3c4146;
+}
+
+.view__dashboard:focus,
+.view__list:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
 }

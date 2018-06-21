@@ -13,7 +13,8 @@ ul,
 li,
 form,
 input,
-select {
+select,
+button {
   padding: 0;
   margin: 0;
   display: flex;
